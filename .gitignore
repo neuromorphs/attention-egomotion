@@ -3,8 +3,5 @@
 
 remoteConda
 
-1-U-NET/0-dataLabeled.py
-
-dataset/dataset-sample
 dataset/egomotion/*.pt
 dataset/*.zip

@@ -40,7 +40,7 @@ def trainingLoop():
 ##############################
 # ##### Inference Loop ##### #
 ##############################
-def inferenceLoop(interval, live=True):
+def inferenceLoop(datasetName, interval, live=True):
     ##############################
     # ##### Plot inference ##### #
     ##############################
@@ -67,7 +67,7 @@ def inferenceLoop(interval, live=True):
     dataset['targetStack'] = targetStack
 
     if live is False:
-        torch.save(dataset, '../dataset/egomotion/sphereInference.pt')
+        torch.save(dataset, f'../dataset/egomotion/{datasetName}Inference.pt')
     else:
         plt.figure(figsize=(9, 3))
         for t in range(interval):
@@ -110,4 +110,4 @@ if __name__ == '__main__':
     parameters = torch.load('../model/egomotion.pt', map_location=device)
     neuralNetwork.load_state_dict(parameters)
 
-    inferenceLoop(100, live=True)
+    inferenceLoop(datasetName, 29, live=False)

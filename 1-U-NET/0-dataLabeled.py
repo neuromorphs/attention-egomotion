@@ -2,7 +2,7 @@ import numpy as np
 import torch
 import matplotlib.pyplot as plt
 
-labelled_events = np.load('../dataset/dataset-sample/dataset-sample/recordings/2024-01-17T12-03-38.264Z/labelled_events.npy')
+labelled_events = np.load('../dataset/labelled_events.npy')
 
 
 time = labelled_events['t']*1e-6

@@ -42,3 +42,5 @@ def gifCreator(file):
 if __name__ == '__main__':
     gifCreator('sphereInference')
     gifCreator('sphereInferenceSpike')
+    gifCreator('realDataInference')
+    gifCreator('realDataInferenceSpike')
