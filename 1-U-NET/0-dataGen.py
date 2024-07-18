@@ -1,7 +1,7 @@
 import torch
 import matplotlib.pyplot as plt
 
-def datasetCreation(name, vx, vy):
+def datasetCreation(name, radiusx, radiusy, vx, vy):
     frame, witdth, height = 1000, 400, 400
 
     source = torch.zeros((frame, witdth, height))
@@ -13,12 +13,11 @@ def datasetCreation(name, vx, vy):
 
     object = torch.zeros_like(background)
     xCenter, yCenter = 50, 50
-    radius = 20
     angles = torch.linspace(0, torch.pi/2, 100)
     if 'square' in name:
-            object[xCenter-radius:xCenter+radius, yCenter-radius:yCenter+radius] = 1
+            object[xCenter-radiusx:xCenter+radiusx, yCenter-radiusy:yCenter+radiusy] = 1
     else:
-        x, y = (radius * torch.cos(angles)).type(torch.int), (radius * 1.5 * torch.sin(angles)).type(torch.int)
+        x, y = (radiusx*torch.cos(angles)).type(torch.int), (radiusy*torch.sin(angles)).type(torch.int)
         for a, b in zip(x, y):
             object[xCenter:xCenter+a, yCenter:yCenter+b] = 1
             object[xCenter-a:xCenter, yCenter:yCenter+b] = 1
@@ -52,6 +51,6 @@ def datasetCreation(name, vx, vy):
 
 
 if __name__ == '__main__':
-    datasetCreation('sphere', 17, 27)
-    datasetCreation('ellipsoid', 17, -27)
-    datasetCreation('square', -3, 27)
+    datasetCreation('sphere', 20, 20, 17, 27)
+    datasetCreation('ellipsoid', 20, 27, 17, -27)
+    datasetCreation('square', 20, 20, -3, 27)
